@@ -8,7 +8,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AllUsers from './pages/AllUsers';
 import ChangeAvatar from './pages/ChangeAvatar';
+import CreateTopic from './pages/CreateTopic';
 import './App.css';
+
+import io from "socket.io-client" ;
+const socket = io.connect("http://localhost:4000")        
 
 function App() {
   const divStyle = {
@@ -46,8 +50,8 @@ function App() {
         <Route path="/register" element={<Register />}></Route> 
         <Route path="/allusers" element ={<AllUsers />} ></Route> 
         <Route path="/changeavatar" element ={<ChangeAvatar />} ></Route> 
-        {/* <Route path="/createauction" element={<CreateAuction socket={socket}/>}/>
-        <Route path="/myauctions" element={<MyAuctions/>}/>
+        <Route path="/createtopic" element={<CreateTopic socket={socket}/>}/>
+        {/* <Route path="/myauctions" element={<MyAuctions/>}/>
         <Route path="/bidshistory" element={<BidsHistory/>}/>
         <Route path="/singleauction/:id" element={<SingleAuction socket={socket}/>}/> */}
       </Routes>

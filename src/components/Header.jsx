@@ -76,7 +76,7 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
               <div className='d-flex just-evenly'>
                 <button><Link className='text-nondec' to="/"> All Topics </Link></button>
                 <button><Link className='text-nondec' to="/allusers"> User List </Link></button>
-                <button><Link className='text-nondec' to="/createauction"> Create auction </Link></button>                
+                <button><Link className='text-nondec' to="/createtopic"> Create Topic </Link></button>                
                 <button><Link className='text-nondec' to="/myauctions"> My auctions </Link></button>
                 <button><Link className='text-nondec' to="/bidshistory"> My bids history </Link></button>
                 <button><Link className='text-nondec' to="/changeavatar"> Change Avatar </Link></button>
