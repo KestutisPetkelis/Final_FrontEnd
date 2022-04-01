@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import http from '../plugins/http';
 
 const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
     const divStyle = {
@@ -17,18 +18,9 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
     const nav=useNavigate()
 
     const logout = async() =>{
-      const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json",
-        },
-        credentials: "include",     // reikia sesijai palaikyti
-        //body: JSON.stringify(user) // nereikia -= body: JSON.stringify(user) =- nes GET metodas
-      }
-  
-      const res = await fetch('http://localhost:4000/logout', options)
-      const data = await res.json()
-      // console.log(data)
+      
+      const res = await http.get('logout')
+      console.log("result from http", res)
       
       setMessage("")
       setToolbar(true)
@@ -88,7 +80,7 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
                 <button><Link className='text-nondec' to="/myauctions"> My auctions </Link></button>
                 <button><Link className='text-nondec' to="/bidshistory"> My bids history </Link></button>
                 <button><Link className='text-nondec' to="/changeavatar"> Change Avatar </Link></button>
-                <button onClick={()=>logout()}>Logout</button>
+                <button onClick={()=>logout()}  className="red-text">Logout</button>
               </div>
             </div>
           }

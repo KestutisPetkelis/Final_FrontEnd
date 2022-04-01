@@ -1,4 +1,21 @@
 .user-card{
-    width: 80%;
+    width: 100%;
     height: 80px;
+    border: 1px  solid blue;
+    border-top: none;
+    padding: 10px 0;
+}
+.user-card img{
+    width: 80px;
+    height: 80px;
+    object-position: center;
+    object-fit: cover;
+}
+.userinfo{
+    padding:10px;
+    margin-right: 100px;
+  }
+.red-text{
+    color: red;
+    font-weight: bold;
 }
