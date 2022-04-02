@@ -36,7 +36,14 @@ function App() {
 
   if (!localStorage.getItem('favoritesTopic')) localStorage.setItem('favoritesTopic', JSON.stringify([]));
 
-
+  useEffect(() => {
+    socket.on('infoToAll', message => {
+      console.log(message);
+      setInfoFromServer(message+' (close)');
+      //setPseudoModal(true)
+    });
+    return () => socket.off('infoToAll');
+  }, [socket, message]);
 
   return (
     <div className="App" style={divStyle}>
@@ -46,9 +53,9 @@ function App() {
       
     <Header toolbar={toolbar} setToolbar={setToolbar} setMessage={setMessage} thisUser={thisUser} setThisUser={setThisUser}/>
     
-    {/* <div onClick={()=>setInfoFromServer("")} className="pointer socketmsg"> 
+    <div onClick={()=>setInfoFromServer("")} className="pointer socketmsg"> 
         <i>{infoFromServer}</i>
-     </div> */}
+     </div>
    
       <Routes>
         <Route path="/" element={<Main/>}></Route>

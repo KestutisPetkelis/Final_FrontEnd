@@ -22,8 +22,8 @@ const CreateTopic = ({socket}) => {
     setMessage(res.message)
     inputs.title.current.value=''
     if(res.success){
-      // console.log("socket must be there")
-      socket.emit("newAuction", res.newtopic.username+" created auction: "+ '"'+res.newtopic.title+'" ')
+      console.log("socket must be there", res.newtopic.username)
+      socket.emit("newTopic", res.newtopic.username+" created topic: "+ '"'+res.newtopic.title+'" ')
     }
   
     // console.log("create auction", auction)

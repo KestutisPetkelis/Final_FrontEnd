@@ -32,7 +32,7 @@ const CreatePost = ({thisUser, socket}) => {
         inputs.youtubeUrl.current.value=""
         if(res.success){
             // console.log("socket must be there")
-            socket.emit("newAuction", res.newtopic.username+" created auction: "+ '"'+res.newtopic.title+'" ')
+            socket.emit("newPost", thisUser.username+" has written new post in topic "+ '"'+res.oneTopic.title+'" ')
         }
     
     // console.log("create auction", auction)

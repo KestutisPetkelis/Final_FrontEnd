@@ -127,3 +127,11 @@ button{
 .mb--4{
   margin-bottom: -4px;
 }
+
+/* ***** App.js special */
+
+.socketmsg {
+  /* border: 1px solid blue; */
+  min-height: 30px;
+  color: blue;
+}
