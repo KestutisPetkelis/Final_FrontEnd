@@ -30,6 +30,12 @@
 .flex5{
   flex: 5;
 }
+.flex6{
+  flex: 6;
+}
+.flex8{
+  flex: 8;
+}
 .just-center{
   justify-content: center;
 }
@@ -117,4 +123,7 @@ button{
 }
 .mt-30{
   margin-top: 30px;
+}
+.mb--4{
+  margin-bottom: -4px;
 }

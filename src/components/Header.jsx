@@ -65,11 +65,12 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
               <button><Link className='text-nondec' to="/allusers"> User List </Link></button>
               <button><Link className='text-nondec' to="/login"> Login </Link></button>
               <button><Link className='text-nondec' to="/register"> Register </Link></button>
+              <button><Link className='text-nondec' to="/favorites"> Favorites </Link></button>
             </div>
           }
           {!toolbar &&
             <div>
-              <div className='d-flex just-between'>
+              <div className='d-flex just-end'>
                 <div className='userinfo'> User: <b><i>{thisUser.username}</i></b> </div> 
                 
               </div>
@@ -80,6 +81,7 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
                 <button><Link className='text-nondec' to="/myauctions"> My auctions </Link></button>
                 <button><Link className='text-nondec' to="/bidshistory"> My bids history </Link></button>
                 <button><Link className='text-nondec' to="/changeavatar"> Change Avatar </Link></button>
+                <button><Link className='text-nondec' to="/favorites"> Favorites </Link></button>
                 <button onClick={()=>logout()}  className="red-text">Logout</button>
               </div>
             </div>

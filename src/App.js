@@ -9,6 +9,9 @@ import Register from './pages/Register';
 import AllUsers from './pages/AllUsers';
 import ChangeAvatar from './pages/ChangeAvatar';
 import CreateTopic from './pages/CreateTopic';
+import SingleTopic from './components/SingleTopic';
+import CreatePost from './components/CreatePost';
+import Favorites from './pages/Favorites';
 import './App.css';
 
 import io from "socket.io-client" ;
@@ -30,9 +33,14 @@ function App() {
   const [message, setMessage] = useState("")
   const [thisUser, setThisUser] = useState({username:"", photo:""})
   const [infoFromServer, setInfoFromServer] = useState("")
+
+  if (!localStorage.getItem('favoritesTopic')) localStorage.setItem('favoritesTopic', JSON.stringify([]));
+
+
+
   return (
     <div className="App" style={divStyle}>
-      <i>Simple Forum</i>
+      <h3 style={{textAlign:"left", color: "blue"}}><i>Simple Forum</i></h3>
 
       <BrowserRouter>
       
@@ -51,9 +59,11 @@ function App() {
         <Route path="/allusers" element ={<AllUsers />} ></Route> 
         <Route path="/changeavatar" element ={<ChangeAvatar />} ></Route> 
         <Route path="/createtopic" element={<CreateTopic socket={socket}/>}/>
-        {/* <Route path="/myauctions" element={<MyAuctions/>}/>
-        <Route path="/bidshistory" element={<BidsHistory/>}/>
-        <Route path="/singleauction/:id" element={<SingleAuction socket={socket}/>}/> */}
+        <Route path="/createpost/:id" element={<CreatePost socket={socket} thisUser={thisUser}/>}/>
+        <Route path="/favorites" element={<Favorites/>}/>
+        {/* <Route path="/myauctions" element={<MyAuctions/>}/> */}
+        {/* <Route path="/bidshistory" element={<BidsHistory/>}/> */}
+        <Route path="/singletopic/:id" element={<SingleTopic socket={socket} thisUser={thisUser}/>}/>
       </Routes>
     </BrowserRouter>
     </div>

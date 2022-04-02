@@ -15,20 +15,7 @@ const CreateTopic = ({socket}) => {
       title: inputs.title.current.value,
       
     }
-    // const options = { 
-    //   method: "POST",
-    //   headers: {
-    //       "content-type": "application/json",
-    //   },
-    //   credentials: "include",
-    //   body: JSON.stringify(auction) 
-    // }
-
-    // const res = await fetch('http://localhost:4000/createauction', options)
-    // const data = await res.json()
-                              
-    // console.log(data, data.message)
-
+    
     const res = await http.post(topic,'createtopic')
         console.log("result from http", res, res.message)
 
@@ -54,8 +41,8 @@ const CreateTopic = ({socket}) => {
                     <input className='mt-5' type="text" size="80" ref={inputs.title} placeholder='Topic title must be 6-80 characters'/><br/><br/><br/>
                     <button onClick={()=>createtopic()} className="ml-0">Create new topic</button>
                 </div>
-            </div>
-            <h4>{message}</h4>
+        </div>
+        <h4>{message}</h4>
 
 
 
