@@ -27,34 +27,6 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
       setThisUser({username:"", photo:""})
       nav("/")
     }
-// ************************
-    // useEffect(()=>{
-    //   const fechtPooling = setInterval(() => {
-    //   fetchData()
-    //   //console.log('refetch')
-    //   }, 1000);
-    //   return () => clearInterval(fechtPooling)
-    // },[])
-
-    // async function fetchData(){
-    //   const options = {
-    //     method: "GET",
-    //     headers: {
-    //         "content-type": "application/json",
-    //     },
-    //     credentials: "include",     // reikia sesijai palaikyti
-    //     //body: JSON.stringify(user) // nereikia -= body: JSON.stringify(user) =- nes GET metodas
-    //   }
-
-    //   const res = await fetch('http://localhost:4000/info', options)
-    //   const data = await res.json()
-    //   //console.log("this user ", data)
-
-    //   if(data.activeuser){
-    //     //console.log("Active user on single post", data.activeuser.username)
-    //     setThisUser({username:data.activeuser.username, money:data.activeuser.money})
-    //   }
-    // }
 
   return (
     <div style={divStyle}>
@@ -62,7 +34,7 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
           {toolbar &&
             <div className='d-flex just-evenly'>
               <button><Link className='text-nondec' to="/"> All Topics </Link></button>
-              <button><Link className='text-nondec' to="/allusers"> User List </Link></button>
+              <button><Link className='text-nondec' to="/allusers"> Users List </Link></button>
               <button><Link className='text-nondec' to="/login"> Login </Link></button>
               <button><Link className='text-nondec' to="/register"> Register </Link></button>
               <button><Link className='text-nondec' to="/favorites"> Favorites </Link></button>
@@ -76,9 +48,9 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
               </div>
               <div className='d-flex just-evenly'>
                 <button><Link className='text-nondec' to="/"> All Topics </Link></button>
-                <button><Link className='text-nondec' to="/allusers"> User List </Link></button>
+                <button><Link className='text-nondec' to="/allusers"> Users List </Link></button>
                 <button><Link className='text-nondec' to="/createtopic"> Create Topic </Link></button>                
-                <button><Link className='text-nondec' to="/myauctions"> My auctions </Link></button>
+                <button><Link className='text-nondec' to="/myaccount"> My Account </Link></button>
                 <button><Link className='text-nondec' to="/bidshistory"> My bids history </Link></button>
                 <button><Link className='text-nondec' to="/changeavatar"> Change Avatar </Link></button>
                 <button><Link className='text-nondec' to="/favorites"> Favorites </Link></button>

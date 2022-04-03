@@ -24,7 +24,7 @@
     height: 50px;
     border: 1px  solid blue;
     border-top: none;
-    padding: 10px 0;
+    padding: 10px 12px 10px 0;
 }
 .topic-card img{
     width: 50px;
@@ -50,7 +50,7 @@ textarea{
     width: 100%;
     border: 1px  solid blue;
     border-top: none;
-    padding: 10px 0;
+    padding: 10px 12px 10px 0;
 }
 .post-time{
     font-size: 12px;

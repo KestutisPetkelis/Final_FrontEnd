@@ -12,6 +12,7 @@ import CreateTopic from './pages/CreateTopic';
 import SingleTopic from './components/SingleTopic';
 import CreatePost from './components/CreatePost';
 import Favorites from './pages/Favorites';
+import MyAccount from './pages/MyAccount';
 import './App.css';
 
 import io from "socket.io-client" ;
@@ -21,10 +22,7 @@ function App() {
   const divStyle = {
     width: "100%", 
     minHeight: "100vh",
-    // border: "1px solid blue",
     marginTop: "0px",
-    // marginBottom: "10px",
-    // marginLeft: "10px",
     padding: "20px",
     backgroundColor: "aliceblue",
   };
@@ -40,7 +38,6 @@ function App() {
     socket.on('infoToAll', message => {
       console.log(message);
       setInfoFromServer(message+' (close)');
-      //setPseudoModal(true)
     });
     return () => socket.off('infoToAll');
   }, [socket, message]);
@@ -49,7 +46,7 @@ function App() {
     <div className="App" style={divStyle}>
       <h3 style={{textAlign:"left", color: "blue"}}><i>Simple Forum</i></h3>
 
-      <BrowserRouter>
+  <BrowserRouter>
       
     <Header toolbar={toolbar} setToolbar={setToolbar} setMessage={setMessage} thisUser={thisUser} setThisUser={setThisUser}/>
     
@@ -68,7 +65,7 @@ function App() {
         <Route path="/createtopic" element={<CreateTopic socket={socket}/>}/>
         <Route path="/createpost/:id" element={<CreatePost socket={socket} thisUser={thisUser}/>}/>
         <Route path="/favorites" element={<Favorites/>}/>
-        {/* <Route path="/myauctions" element={<MyAuctions/>}/> */}
+        <Route path="/myaccount" element={<MyAccount thisUser={thisUser}/>}/>
         {/* <Route path="/bidshistory" element={<BidsHistory/>}/> */}
         <Route path="/singletopic/:id" element={<SingleTopic socket={socket} thisUser={thisUser}/>}/>
       </Routes>

@@ -105,6 +105,9 @@ button{
 .pl-20{
   padding-left: 20px;
 }
+.p-10{
+  padding: 10px;
+}
 .mv-5{
   margin: 5px 0;
 }
@@ -127,6 +130,12 @@ button{
 .mb--4{
   margin-bottom: -4px;
 }
+.mb-10{
+  margin-bottom: 10px;
+}
+.mr--12{
+  margin-right: -12px;
+}
 
 /* ***** App.js special */
 
@@ -134,4 +143,11 @@ button{
   /* border: 1px solid blue; */
   min-height: 30px;
   color: blue;
+}
+@media (max-width:576px){
+  body{
+      transform: scale(0.7);
+      transform-origin: top left;
+      overflow: auto;
+  }
 }

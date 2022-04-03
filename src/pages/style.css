@@ -12,3 +12,12 @@
     min-height: 60px;
     padding-left: 10px;
 }
+.border-blue{
+    border: 2px solid blue;
+}
+.div-btn-color-1{
+    background-color: rgb(158, 200, 236);
+}
+.div-btn-color-2{
+    background-color: rgb(100, 168, 228);
+}
