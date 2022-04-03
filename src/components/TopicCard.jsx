@@ -10,7 +10,7 @@ const TopicCard = ({topic, favoritesAll, fav, setFav}) => {
     const [getFavorited, setFavorited] = useState(
         JSON.parse(localStorage.favoritesTopic).find((x) => x === topic._id)
       );
-    console.log(topic._id)
+    //console.log(topic._id)
     useEffect(() => {
         setFavorited(
           JSON.parse(localStorage.favoritesTopic).find((x) => x === topic._id)
@@ -32,14 +32,14 @@ const TopicCard = ({topic, favoritesAll, fav, setFav}) => {
         }
         localStorage.setItem("favoritesTopic", JSON.stringify(favorites));
         setFav(!fav)
-        //setFavoritesCounter(JSON.parse(localStorage.favorites).length);
+        
       }
 
 
 
   return (
     <div>
-        <div className='topic-card d-flex space-between just-start'>
+        <div className='topic-card d-flex space-between just-start mr--12'>
             <div className='flex4'>
                 <p className='topic-text pointer' onClick={()=>getSingleTopic(topic._id)}>{topic.title}</p>
             </div>

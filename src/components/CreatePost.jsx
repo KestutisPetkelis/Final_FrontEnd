@@ -47,15 +47,15 @@ const CreatePost = ({thisUser, socket}) => {
   return (
     <div>
         
-        <h3>Create Post</h3>
+        <h4>Create Post</h4>
         <div className='d-flex just-center'>
                 <div className='reg-inputs'>
-                    <label>Type you post: </label><br/><br/>
-                    <textarea rows="16" cols="60" placeholder='Required, the post can be 10-250 characters length' ref={inputs.text}/><br/><br/>
+                    <label>Type you post: </label><br/>
+                    <textarea rows="10" cols="60" placeholder='Required, the post can be 10-250 characters length' ref={inputs.text}/><br/><br/>
                     <label>Youtube clip URL:</label><br/>
-                    <input className='mt-5' type="text" size="80" ref={inputs.youtubeUrl} placeholder='Optional'/><br/><br/>
+                    <input className='mt-5' type="text" size="80" ref={inputs.youtubeUrl} placeholder='Optional'/><br/><br/><br/>
                     <label>Picture URL:</label><br/>
-                    <input className='mt-5' type="text" size="80" ref={inputs.photo} placeholder="Optional"/><br/><br/><br/>
+                    <input className='mt-5' type="text" size="80" ref={inputs.photo} placeholder="Optional"/><br/><br/>
                     <button onClick={()=>createpost()} className="ml-0">Create new post</button>
                 </div>
         </div>

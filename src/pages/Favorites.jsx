@@ -27,16 +27,16 @@ const Favorites = () => {
         {favoritesAll.length>0 ?
             <div>
                 <div className='d-flex user-card-all topic-header'>
-                    <div className='flex5'>
+                    <div className='flex5 pt-10'>
                         <h3>Topics </h3>
                     </div>
-                    <div className='flex2 pl-20 text-left'>
+                    <div className='flex2 pl-20 text-left pt-10'>
                         <h3>Create time </h3> 
                     </div>
-                    <div className='flex1 pl-20 text-left'>
+                    <div className='flex1 pl-20 text-left pt-10'>
                         <h3>Posts </h3> 
                     </div>
-                    <div className='flex4 pl-20'>
+                    <div className='flex4 pl-20 pt-10'>
                         <h3>Created by</h3>
                     </div>
                         

@@ -14,13 +14,13 @@ const MyPosts = ({thisUser}) => {
 
     const getAllPosts = async() =>{
       const res = await http.get('myposts')
-      console.log("result from http", res)
+      //console.log("result from http", res)
       if(res.myPosts.length>0){
           setAllPosts(res.myPosts)
       }
       
     }
-    console.log(thisUser)
+    //console.log(thisUser)
   return (
     <div>
         
@@ -56,7 +56,7 @@ const MyPosts = ({thisUser}) => {
         </div>
         :
         <div>
-            <h3>Any posts have not been written by You </h3>
+            <h4>Any posts have not been written by You </h4>
         </div>
         }
     </div>

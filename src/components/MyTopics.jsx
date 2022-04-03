@@ -14,7 +14,7 @@ const MyTopics = ({thisUser}) => {
 
     const getAllTopics = async() =>{
       const res = await http.get('alltopics')
-      console.log("result from http", res)
+      //console.log("result from http", res)
       const myTopics = res.allTopics.filter(x=>x.username===thisUser.username)
       setAllTopics(myTopics)
     }
@@ -22,7 +22,7 @@ const MyTopics = ({thisUser}) => {
     <div>
         
         {alltopics.length >0 ?
-            <div>
+            <div className='mr--12'>
                 <div className='d-flex user-card-all topic-header'>
                     <div className='flex5'>
                         <h3>Topics </h3>
@@ -43,7 +43,7 @@ const MyTopics = ({thisUser}) => {
                 )}
             </div>
         :   
-        <h3>There are no any topics in the list</h3>
+        <h4>There are no any topics in the list</h4>
         } 
     </div>
   )

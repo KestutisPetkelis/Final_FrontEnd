@@ -23,7 +23,7 @@ const CreateTopic = ({socket}) => {
     inputs.title.current.value=''
     if(res.success){
       console.log("socket must be there", res.newtopic.username)
-      socket.emit("newTopic", res.newtopic.username+" created topic: "+ '"'+res.newtopic.title+'" ')
+      socket.emit("newTopic", res.newtopic.username+" created topic:  "+res.newtopic.title+'" ')
     }
   
     // console.log("create auction", auction)
@@ -37,7 +37,8 @@ const CreateTopic = ({socket}) => {
         <h3>Create Topic</h3>
         <div className='d-flex just-center'>
                 <div className='reg-inputs'>
-                    <label>Topic title: </label><br/><br/>
+                  <br/>
+                    <label>Topic title: </label><br/>
                     <input className='mt-5' type="text" size="80" ref={inputs.title} placeholder='Topic title must be 6-80 characters'/><br/><br/><br/>
                     <button onClick={()=>createtopic()} className="ml-0">Create new topic</button>
                 </div>

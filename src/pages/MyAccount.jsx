@@ -5,10 +5,10 @@ import MyPosts from '../components/MyPosts'
 
 const MyAccount = ({thisUser}) => {
     const [myAccPage, setMyAccPage] = useState(1)
-    console.log(thisUser.username)
+    // console.log(thisUser.username)
   return (
     <div>
-       <h3>My Account</h3> 
+       <h4>My Account</h4> 
         <div className='d-flex mb-10 mr--12'>
             <div onClick={()=>setMyAccPage(1)} className='flex1 border-blue p-10 pointer' style={{backgroundColor: myAccPage===2 ? "rgb(158, 200, 236)" : "rgb(100, 168, 228)"}}>
                 My topics 

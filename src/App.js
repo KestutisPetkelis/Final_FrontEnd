@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     socket.on('infoToAll', message => {
-      console.log(message);
+      // console.log(message);
       setInfoFromServer(message+' (close)');
     });
     return () => socket.off('infoToAll');

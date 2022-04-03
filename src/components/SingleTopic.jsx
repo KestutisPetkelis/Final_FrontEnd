@@ -3,30 +3,50 @@ import {useEffect, useState} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { BsChevronDoubleRight } from "react-icons/bs";
 import ReactPlayer from 'react-player/youtube'
+import ReactPaginate from 'react-paginate'
 import http from '../plugins/http';
+import './style.css';
 
 const SingleTopic = ({thisUser}) => {
+    const itemsPerPage =10
     const {id} = useParams()
-    console.log(id, thisUser)
+    
     const nav= useNavigate()
 
     const [singleTopic, setSingleTopic] =useState()
     const [loading, setLoading] = useState(true)
-
+    const [currentItems, setCurrentItems] = useState(null); // itemai kuriuos rodo puslapyje
+    const [pageCount, setPageCount] = useState(0);      // kuris puslaois
+    const [itemOffset, setItemOffset] = useState(0);    // kiek itemu per puslapi -> kiek reikia kad pavaziuotu
     useEffect(()=>{
         getSingleTopic()
 
     },[])
 
+  useEffect(() => {
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage;
+    // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setCurrentItems(singleTopic?.posts.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(singleTopic?.posts?.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, singleTopic]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % singleTopic?.posts?.length;
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // );
+    setItemOffset(newOffset);
+  };
+
     const getSingleTopic = async() =>{
         const res = await http.get('topic/'+id)
-        console.log("result from http", res, res.singletopic.title)
+        //console.log("result from http", res, res.singletopic.title)
         setSingleTopic(res.singletopic)
         setLoading(false)
     }
 
     const createPost = (arg) =>{
-        console.log("click", arg)
         nav("/createpost/"+arg)
     }
 
@@ -34,17 +54,20 @@ const SingleTopic = ({thisUser}) => {
         return <div> loading...</div>
 
   return (
-    <div>
+    <div className="items">
         <div>
             <div className='d-flex user-card-all topic-header'>
-                <div className='flex5'>
-                    <h3>Discussion <BsChevronDoubleRight className='mb--4'/> &emsp; "{singleTopic.title}"</h3>
+                <div className='flex1'>
+                    Discussion <BsChevronDoubleRight /> 
                 </div>
-                <div className='flex2 pl-20 text-left'>
+                <div className='flex4'>
+                   <h5> "{singleTopic.title}"</h5>
+                </div>
+                <div className='flex1 pl-20 text-left'>
                         
                 </div>
                 <div className='flex3 pl-20 text-left'>
-                <h5>Created {(new Date(singleTopic.time)).toLocaleString('lt-Lt')} by {singleTopic.username}</h5>  
+                Created {(new Date(singleTopic.time)).toLocaleString('lt-Lt')} by <h5>{singleTopic.username}</h5>  
                 </div>
                 <div className='flex2 pl-20'>
                     {thisUser.username && <button onClick={()=>createPost(id)}>Create post</button>}
@@ -58,7 +81,7 @@ const SingleTopic = ({thisUser}) => {
             <div>
                 <div >
                     
-                    {singleTopic.posts.map((x,i) =>
+                    {currentItems?.map((x,i) =>
                         <div className='d-flex post-card'>
                             <div className='flex2'>
                                 <span>Written by: </span> <br/> 
@@ -88,6 +111,29 @@ const SingleTopic = ({thisUser}) => {
         :   
         <h3>There are no any posts in this discussion</h3>
         } 
+        <h1></h1>
+        <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        style={{marginTop:"10px"}}
+        
+      />
     </div>
   )
 }

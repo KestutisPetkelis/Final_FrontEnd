@@ -88,6 +88,7 @@ button{
   cursor: pointer;
   padding: 5px 15px;
   margin: 10px;
+  
   /* text-decoration: underline; */
 }
 .pointer{
@@ -107,6 +108,9 @@ button{
 }
 .p-10{
   padding: 10px;
+}
+.pt-10{
+  padding-top: 10px;
 }
 .mv-5{
   margin: 5px 0;
