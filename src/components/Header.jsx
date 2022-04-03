@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import http from '../plugins/http';
@@ -51,7 +51,6 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
                 <button><Link className='text-nondec' to="/allusers"> Users List </Link></button>
                 <button><Link className='text-nondec' to="/createtopic"> Create Topic </Link></button>                
                 <button><Link className='text-nondec' to="/myaccount"> My Account </Link></button>
-                <button><Link className='text-nondec' to="/bidshistory"> My bids history </Link></button>
                 <button><Link className='text-nondec' to="/changeavatar"> Change Avatar </Link></button>
                 <button><Link className='text-nondec' to="/favorites"> Favorites </Link></button>
                 <button onClick={()=>logout()}  className="red-text">Logout</button>

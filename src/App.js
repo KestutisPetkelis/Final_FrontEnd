@@ -66,7 +66,6 @@ function App() {
         <Route path="/createpost/:id" element={<CreatePost socket={socket} thisUser={thisUser}/>}/>
         <Route path="/favorites" element={<Favorites/>}/>
         <Route path="/myaccount" element={<MyAccount thisUser={thisUser}/>}/>
-        {/* <Route path="/bidshistory" element={<BidsHistory/>}/> */}
         <Route path="/singletopic/:id" element={<SingleTopic socket={socket} thisUser={thisUser}/>}/>
       </Routes>
     </BrowserRouter>

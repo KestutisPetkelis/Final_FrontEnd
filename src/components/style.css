@@ -67,4 +67,17 @@ textarea{
     cursor: pointer;
     position: absolute;
     right: 30px;
-  }
+}
+.myposts-card{
+    margin-top: 5px;
+    border: blue;
+    border-style: double;
+    margin-right: -12px;
+    text-align: left;
+    padding-left: 20px;
+}
+.myposts-card-text{
+    margin: 5px 0;
+    margin-right: -12px;
+    padding-bottom: 10px;
+}

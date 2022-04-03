@@ -149,5 +149,6 @@ button{
       transform: scale(0.7);
       transform-origin: top left;
       overflow: auto;
+      width: max-content;
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {useContext, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import http from '../plugins/http';
 import TopicCard from '../components/TopicCard';
 import "./style.css"
@@ -15,7 +15,7 @@ const Favorites = () => {
             const favoriteTopics = res.getFavoriteTopics
             const realFavorites = favoriteTopics.map(x=>x._id)
             localStorage.setItem("favoritesTopic", JSON.stringify(realFavorites));
-            //setFavoritesCounter(JSON.parse(localStorage.favorites).length);
+            
             setFavoritesAll(favoriteTopics)
           })
       }, [localStorage.favoritesTopic,fav])
