@@ -22,7 +22,7 @@ const Register = () => {
         }
                 
         const res = await http.post(user,'registeruser')
-        console.log("result from http", res, res.message)
+        // console.log("result from http", res, res.message)
         
         setMessage(res.message)
 

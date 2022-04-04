@@ -13,6 +13,7 @@ import SingleTopic from './components/SingleTopic';
 import CreatePost from './components/CreatePost';
 import Favorites from './pages/Favorites';
 import MyAccount from './pages/MyAccount';
+import NotificationsModal from './modals/NotificationsModal';
 import './App.css';
 import http from './plugins/http';
 
@@ -32,6 +33,8 @@ function App() {
   const [message, setMessage] = useState("")
   const [thisUser, setThisUser] = useState({username:"", photo:""})
   const [allusers, setAllUsers] =useState([])
+  const [notifications,setNotifications] = useState([])
+  const [notificationModal, setNotificationModal] =useState(false)
   const [infoFromServer, setInfoFromServer] = useState("")
 
   if (!localStorage.getItem('favoritesTopic')) localStorage.setItem('favoritesTopic', JSON.stringify([]));
@@ -41,12 +44,26 @@ function App() {
 
   },[])
 
+  useEffect(()=>{
+    getNewNotifications()
+
+  },[thisUser])
+
+
   const getAllUsers = async() =>{
       const res = await http.get('allusers')
       //console.log("result from http", res)
       setAllUsers(res.allUsers)
   }
+  const getNewNotifications = async()=>{
+      const res =await http.get('getnotifications')
+      
+      if(res.success){
+        setNotifications(res.activeNotifications)
+        setNotificationModal(true)
+      }
 
+  }
 
   useEffect(() => {
     socket.on('infoToAll', message => {
@@ -59,6 +76,7 @@ function App() {
   return (
     <div className="App" style={divStyle}>
       <h3 style={{textAlign:"left", color: "blue"}}><i>Simple Forum</i></h3>
+      
 
   <BrowserRouter>
       
@@ -83,6 +101,7 @@ function App() {
         <Route path="/singletopic/:id" element={<SingleTopic socket={socket} thisUser={thisUser} allusers={allusers}/>}/>
       </Routes>
     </BrowserRouter>
+  {notificationModal && <NotificationsModal notifications={notifications} setNotificationModal={setNotificationModal}/>}
     </div>
   );
 }

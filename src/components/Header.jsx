@@ -20,7 +20,7 @@ const Header = ({toolbar, setToolbar, setMessage, thisUser, setThisUser}) => {
     const logout = async() =>{
       
       const res = await http.get('logout')
-      console.log("result from http", res)
+      // console.log("result from http", res)
       
       setMessage("")
       setToolbar(true)

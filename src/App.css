@@ -112,6 +112,9 @@ button{
 .pt-10{
   padding-top: 10px;
 }
+.p-b-5{
+  padding-bottom: 5px;
+}
 .mv-5{
   margin: 5px 0;
 }
@@ -143,6 +146,9 @@ button{
 .mr--12{
   margin-right: -12px;
 }
+.m-b-5{
+  margin-bottom: 5px;
+}
 
 /* ***** App.js special */
 
@@ -152,6 +158,17 @@ button{
   color: blue;
 }
 
+.modal-notication{
+  width: 400px;
+  min-height: 200px;
+  border: 1px solid orange;
+  position: absolute;
+  top: 10%;
+  left: 20px;
+  z-index: 2;
+  background-color: rgb(208, 228, 245);
+  padding: 20px;
+}
 
 @media (max-width: 1024px) {
   body{
