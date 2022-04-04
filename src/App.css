@@ -119,6 +119,9 @@ button{
   margin-left: 20px;
   margin-right: 20px;
 }
+.mt-20{
+  margin-top: 20px;
+}
 .ml-0{
   margin-left: 0;
 }
@@ -148,6 +151,17 @@ button{
   min-height: 30px;
   color: blue;
 }
+
+
+@media (max-width: 1024px) {
+  body{
+    transform: scale(0.85);
+    transform-origin: top left;
+    overflow: auto;
+    width: max-content;
+}
+}
+
 @media (max-width:576px){
   body{
       transform: scale(0.7);
@@ -156,3 +170,5 @@ button{
       width: max-content;
   }
 }
+
+

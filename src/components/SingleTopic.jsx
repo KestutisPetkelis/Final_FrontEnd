@@ -57,7 +57,7 @@ const SingleTopic = ({thisUser}) => {
     <div className="items">
         <div>
             <div className='d-flex user-card-all topic-header'>
-                <div className='flex1'>
+                <div className='flex2'>
                     Discussion <BsChevronDoubleRight /> 
                 </div>
                 <div className='flex4'>
@@ -67,7 +67,7 @@ const SingleTopic = ({thisUser}) => {
                         
                 </div>
                 <div className='flex3 pl-20 text-left'>
-                Created {(new Date(singleTopic.time)).toLocaleString('lt-Lt')} by <h5>{singleTopic.username}</h5>  
+                Created {(new Date(singleTopic.time)).toLocaleString('lt-Lt')} by <h5 className='figure'>{singleTopic.username}</h5>  
                 </div>
                 <div className='flex2 pl-20'>
                     {thisUser.username && <button onClick={()=>createPost(id)}>Create post</button>}
@@ -109,7 +109,7 @@ const SingleTopic = ({thisUser}) => {
                 
             </div>
         :   
-        <h3>There are no any posts in this discussion</h3>
+        <h3 className='mt-20'>There are no any posts in this discussion</h3>
         } 
         <h1></h1>
         <ReactPaginate
