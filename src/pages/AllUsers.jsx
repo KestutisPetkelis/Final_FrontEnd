@@ -1,22 +1,22 @@
 import React from 'react'
-import http from '../plugins/http'
-import { useEffect, useState } from 'react'
+// import http from '../plugins/http'
+// import { useEffect, useState } from 'react'
 import UserCard from '../components/UserCard'
 import { BsArrowDownSquare } from "react-icons/bs";
 import "./style.css"
 
-const AllUsers = () => {
-    const [allusers, setAllUsers] =useState([])
-    useEffect(()=>{
-        getAllUsers()
+const AllUsers = ({allusers}) => {
+   // const [allusers, setAllUsers] =useState([])
+    // useEffect(()=>{
+    //     getAllUsers()
 
-    },[])
+    // },[])
 
-    const getAllUsers = async() =>{
-        const res = await http.get('allusers')
-        console.log("result from http", res)
-        setAllUsers(res.allUsers)
-    }
+    // const getAllUsers = async() =>{
+    //     const res = await http.get('allusers')
+    //     console.log("result from http", res)
+    //     setAllUsers(res.allUsers)
+    // }
 
   return (
     <div>

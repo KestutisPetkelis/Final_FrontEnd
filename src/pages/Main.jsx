@@ -15,7 +15,7 @@ const Main = () => {
 
     const getAllTopics = async() =>{
       const res = await http.get('alltopics')
-      console.log("result from http", res)
+      //console.log("result from http", res)
       setAllTopics(res.allTopics)
     }
   return (

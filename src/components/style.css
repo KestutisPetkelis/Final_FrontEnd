@@ -28,7 +28,7 @@
     border-top: none;
     padding: 10px 12px 10px 0;
 }
-.topic-card img{
+.topic-card img, .post-writer-img{
     width: 50px;
     height: 50px;
     object-position: center;

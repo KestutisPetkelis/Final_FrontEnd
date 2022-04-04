@@ -7,7 +7,7 @@ import ReactPaginate from 'react-paginate'
 import http from '../plugins/http';
 import './style.css';
 
-const SingleTopic = ({thisUser}) => {
+const SingleTopic = ({thisUser, allusers}) => {
     const itemsPerPage =10
     const {id} = useParams()
     
@@ -15,6 +15,7 @@ const SingleTopic = ({thisUser}) => {
 
     const [singleTopic, setSingleTopic] =useState()
     const [loading, setLoading] = useState(true)
+   
     const [currentItems, setCurrentItems] = useState(null); // itemai kuriuos rodo puslapyje
     const [pageCount, setPageCount] = useState(0);      // kuris puslaois
     const [itemOffset, setItemOffset] = useState(0);    // kiek itemu per puslapi -> kiek reikia kad pavaziuotu
@@ -45,6 +46,13 @@ const SingleTopic = ({thisUser}) => {
         setSingleTopic(res.singletopic)
         setLoading(false)
     }
+
+    const getAvatar = (arg) =>{
+        const pic = allusers?.find(x => x.username===arg)
+        //console.log(arg)
+       return (pic.photo)
+    }
+
 
     const createPost = (arg) =>{
         nav("/createpost/"+arg)
@@ -87,6 +95,7 @@ const SingleTopic = ({thisUser}) => {
                                 <span>Written by: </span> <br/> 
                                 <b>{x.username}</b> <br/>
                                 <span className='post-time'>{(new Date( x.time)).toLocaleString('lt-Lt')} </span><br/>
+                                <img className='post-writer-img' src={getAvatar(x.username)} alt='ner avataro'/>
                            </div>
                            <div className='flex8 text-left pl-20'>
                                 {x.photo &&

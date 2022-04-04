@@ -14,6 +14,7 @@ import CreatePost from './components/CreatePost';
 import Favorites from './pages/Favorites';
 import MyAccount from './pages/MyAccount';
 import './App.css';
+import http from './plugins/http';
 
 import io from "socket.io-client" ;
 const socket = io.connect("http://localhost:4000")        
@@ -30,9 +31,22 @@ function App() {
   const [toolbar, setToolbar] = useState((true))
   const [message, setMessage] = useState("")
   const [thisUser, setThisUser] = useState({username:"", photo:""})
+  const [allusers, setAllUsers] =useState([])
   const [infoFromServer, setInfoFromServer] = useState("")
 
   if (!localStorage.getItem('favoritesTopic')) localStorage.setItem('favoritesTopic', JSON.stringify([]));
+
+  useEffect(()=>{
+    getAllUsers()
+
+  },[])
+
+  const getAllUsers = async() =>{
+      const res = await http.get('allusers')
+      //console.log("result from http", res)
+      setAllUsers(res.allUsers)
+  }
+
 
   useEffect(() => {
     socket.on('infoToAll', message => {
@@ -60,13 +74,13 @@ function App() {
                   message={message} setMessage={setMessage}
                   setThisUser={setThisUser}/>}></Route>
         <Route path="/register" element={<Register />}></Route> 
-        <Route path="/allusers" element ={<AllUsers />} ></Route> 
+        <Route path="/allusers" element ={<AllUsers allusers={allusers} />} ></Route> 
         <Route path="/changeavatar" element ={<ChangeAvatar />} ></Route> 
         <Route path="/createtopic" element={<CreateTopic socket={socket}/>}/>
         <Route path="/createpost/:id" element={<CreatePost socket={socket} thisUser={thisUser}/>}/>
         <Route path="/favorites" element={<Favorites/>}/>
         <Route path="/myaccount" element={<MyAccount thisUser={thisUser}/>}/>
-        <Route path="/singletopic/:id" element={<SingleTopic socket={socket} thisUser={thisUser}/>}/>
+        <Route path="/singletopic/:id" element={<SingleTopic socket={socket} thisUser={thisUser} allusers={allusers}/>}/>
       </Routes>
     </BrowserRouter>
     </div>
